@@ -39,17 +39,16 @@ class Card(models.Model):
     '''
     Card model for the cards in the deck 
     Parent is the Card_Set model
-    Each card has word, definition, and sentence
+    Each card has word and definition
     '''
     parent_card_set = models.ForeignKey(Card_Set, on_delete = models.CASCADE)
     
-    word = models.CharField(max_length = 50, null = False, blank = False)         # Vocabulary word
-    definition = models.TextField(max_length = 500, null = False, blank = False)  # Word's definition
-    sentences = models.TextField(max_length = 500, null = False, blank = True)    # Word used in sentence
+    question = models.CharField(max_length = 50, null = False, blank = False)         # Vocabulary word
+    answer = models.TextField(max_length = 500, null = False, blank = False)  # Word's definition
     
 
     def __str__(self):
-        return self.word
+        return self.question
 
 
     def is_there_previous_card(self):

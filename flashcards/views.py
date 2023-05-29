@@ -7,7 +7,6 @@ from django.shortcuts import (
 from django.urls import reverse
 from .models import Card_Set, Card
 from .forms import Card_Set_Form, Card_Form
-#from PyDictionary import PyDictionary
 
 # Views for the 'flashcards' app
 def flashcards(request):
@@ -135,25 +134,3 @@ def view_card_set(request, card_set_id):
 
     context = {'card_set_object': card_set_object, 'card_object': card_object}
     return render(request, 'flashcards/view_cards.html', context)
-
-
-#def dictionary(request):
- #   '''
- #   View for the 'search bar' in the
- #   navbar - a page is rendered that 
- #   displays the searched word and its
- #   definition using PyDictionary
- #   '''
-
- #   try:
- #       if request.method == 'GET':
- #           word_searched = request.GET.get('word_searched')
- #           dictionary = PyDictionary()                  # PyDictionary module 
- #           word_def = dictionary.meaning(word_searched) # Get definition of word searched
- #           word_def = list(word_def.values())[0][0]     # Extract definition as a string
-        
-#    except:
-#        word_def = 'This word does not exist in the database'
-
-#    context = {'word_searched': word_searched, 'word_def': word_def}
-#    return render(request, 'flashcards/dictionary.html', context)

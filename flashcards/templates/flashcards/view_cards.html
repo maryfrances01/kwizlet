@@ -5,6 +5,14 @@
 <title>Kwizlet | Flashcards</title>
 
 <head>
+	{% load static %}
+
+    {% block style %}
+	<link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/all.min.css" %}" />
+	{% endblock %}
+
+  </head>
+  <body>
 <style>
 .flip-card {
 	background-color: transparent;
@@ -26,7 +34,8 @@
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
-	transform: rotateY(180deg);
+	transform: rotateX(-180deg);
+	/*transform: rotateY(180deg);*/
 }
 
 /* Position the front and back side */
@@ -47,7 +56,8 @@
 .flip-card-back {
 	background-color: dodgerblue;
 	color: white;
-	transform: rotateY(180deg);
+	/*transform: rotateY(180deg);*/
+	transform: rotateX(-180deg);
 }
 
 </style>
@@ -58,7 +68,7 @@
 <div class="container">
 <div class="row">
 
-	<div class="col-md-4 mr-5">
+	<div class="col-md-5 mr-5">
 	{% if card_object %}
 	<div class="flip-card">
 	<div class="flip-card-inner">
@@ -68,14 +78,14 @@
 		<div class="card-header">{{ card_set_object }}
 		</div>
 		<p>
-		<h4 class="card-title" style="font-size: 45px">{{ card_object.word }}</h4>
+		<h4 class="card-title" style="font-size: 45px">{{ card_object.question }}</h4>
 		</p>
 		</div>
 
 		<!--Back of Card-->
 		<div class="flip-card-back">
 		<p>
-		<h4 class="card-text">{{ card_object.definition }}</h4>
+		<h4 class="card-text">{{ card_object.answer }}</h4>
 		</p>
 		</div>
 	</div>
@@ -87,28 +97,30 @@
 	{% endif %}
 	
 	<!--Previous/Random/Next Card Buttons-->
+	
 	<nav aria-label="...">
-	<ul class="pagination pagination-lg">
+	<ul class="pagination pagination-lg justify-content-center">
 
 		{% if card_object %}
 		<li class="page-item"><a class="page-link" 
 		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_previous_card.id }}">
-		Previous</a></li>
+		<i class="fa-solid fa-circle-arrow-left" style="color: #0b51cb;"></i></a></li>
 
 		<li class="page-item"><a class="page-link"
 		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_set_object.get_random_card.id }}">
-		Random</a></li>
+		<i class="fa-solid fa-shuffle" style="color: #0b51cb;"></i></a></li>
 
 		<li class="page-item"><a class="page-link" 
 		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_next_card.id }}">
-		Next</a></li>
+		<i class="fa-solid fa-circle-arrow-right" style="color: #0b51cb;"></i></a></li>
 		{% endif %}
 	</ul>
 	</nav>
 	
 	
+	
 	<nav aria-label="...">
-	<ul class="pagination pagination-lg">
+	<ul class="pagination pagination-lg justify-content-center">
 	<li class="page-item"><a class="page-link" 
 	href="{% url 'flashcards:edit_card_set' card_set_object.id %}"
 	role="button">Edit Deck</a><p>
@@ -130,20 +142,6 @@
 		<p></p>
 	</div>
 
-	<div class="col-xl-4">
-		<h6>Sentences for - {{ card_object.word | upper }}</h6>
-
-		{% if card_object.sentences|length == 0 %}
-			<p>You have not written a sentence for {{ card_object.word }}.</p> 
-			<a class="btn btn-outline-warning" href="{% url 'flashcards:edit_card' card_object.id %}" role="button">
-			Write a Sentence</a>
-		{% else %}
-			<p>{{ card_object.sentences }}</p>
-			<a class="btn btn-outline-warning" href="{% url 'flashcards:edit_card' card_object.id %}" role="button">
-			Edit Sentence</a>
-		{% endif %}
-
-	</div>
 </div>
 </div>
 {% endblock %}
