@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Kwizlet | Card Decks</title>
+{% endblock %}
+
+{% block body%}
+<div class="row">
+{% for t in topics %}
+{% cycle 'primary' as color silent %}
+    {% if forloop.counter0|divisibleby:3 %}
+        </div><br><div class="row ml-5">
+    {% endif %}
+
+        <div class="column">
+
+            {% if forloop.counter0 == 2 %}
+            <div class="card text-white bg-{{ color }} mr-5" style="width: 17rem;">
+            {% else %}
+            <div class="card text-white bg-{{ color }} mr-3" style="width: 17rem;">
+            {% endif %}
+
+            <div class="card-header">{{ t.description }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ t.topic }}</h5>
+
+                <!--conditional statement for plural/singular use of the word card displayed on template-->
+                {% if t.get_card_count != 1 %}
+                    <h6 class="card-subtitle mb-2 text-white">{{ t.get_card_count }} cards in deck</h6>
+                {% else %}
+                    <h6 class="card-subtitle mb-2 text-white">{{ t.get_card_count }} card in deck</h6>
+                {% endif %}
+
+                <!--p-- class="card-text">{{ t.description }}</!--p-->
+                <a href= "{% url 'flashcards:view_card_set' t.id %}" class="card-link text-white">Study</a>
+                <a href= "{% url 'flashcards:edit_card_set' t.id %}" class="card-link text-white">Edit Deck</a>
+                <a href= "{% url 'flashcards:create_card' t.id %}" class="card-link text-white">Add Card</a>
+            </div>
+            </div>
+        </div>
+        
+    {% if forloop.counter0 == 2 %}
+        <div class="column ml-5">
+            <h3>Custom Card Set</h3>
+            <h6>Create a custom study set</h6>
+            <p>
+            <a class="btn btn-primary" href="{% url 'flashcards:create_card_set' %}"  
+            role="button">Create New</a>
+            </p>
+        </div>
+    {% endif %}     
+{% endfor %}
+{% endblock %}
+
+         
