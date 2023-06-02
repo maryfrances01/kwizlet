@@ -8,16 +8,17 @@
 {% endblock %}
 
 {% block body%}
-<div class="container">
+<div class="container text-center">
+    <br/>
+    <br/>
 
-    <!--The <i> tag is a smily face :)-->
-    <h3>Welcome to Kwizlet - Let's Learn Kubernetes </h3>
+    <h3 style="color: #123786;">Welcome to Kwizlet - Let's Learn Kubernetes! </h3>
 
         <!--<a class="btn btn-link" href="https://www.ets.org/gre/" role="button" target="_blank">
         <h5><b>GRE Official Site</b></h5></a> -->
         <br>
-        <a class="btn btn-link" href="{% url 'flashcards:flashcards' %}" role="button">
-        <h5><b>Flashcards</b></h5></a>
+        <a class="btn btn-link btn-lg btn-primary" href="{% url 'flashcards:flashcards' %}" role="button">
+        <h5 style="color: white;"><b>Flashcards</b></h5></a>
 
 </div>
 {% endblock %}
