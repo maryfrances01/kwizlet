@@ -15,7 +15,7 @@
 /* Add padding BETWEEN each column */
 .row,
 .row > .column {
-  padding: 8px;
+  padding: 10px;
 }
 
 /* Create four equal columns that floats next to each other */
@@ -34,7 +34,7 @@
 /* Content */
 .content {
   background-color: white;
-  padding: 10px;
+  padding: 15px;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -75,15 +75,11 @@
         <h5 style="color: white;"><b>Flashcards</b></h5></a>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
         {% load static %}
-
-        <div class="row">
-            <div class="column">
-              <div class="content">
-                <img src="{% static 'images/node-128.png' %}" alt="node" style="Width:70%">
-              </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="column">
@@ -95,15 +91,23 @@
             <div class="column">
                 <img src="{% static 'images/sched-128.png' %}" alt="scheduler" style="Width:70%">
             </div>
+            <div class="column">
+                <img src="{% static 'images/sched-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/pv-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/netpol-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/ds-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/cronjob-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
           </div>
 
-          <div class="row">
-            <div class="column">
-              <div class="content">
-                <img src="{% static 'images/node-128.png' %}" alt="node" style="Width:70%">
-              </div>
-            </div>
-        </div>
 
 </div>
 {% endblock %}
