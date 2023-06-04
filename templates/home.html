@@ -7,18 +7,103 @@
 </head>
 {% endblock %}
 
+<style>
+  .row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 5%;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
 {% block body%}
 <div class="container text-center">
     <br/>
     <br/>
+    
+        <h3 style="color: #123786;">Welcome to Kwizlet - Let's Learn Kubernetes! </h3>
 
-    <h3 style="color: #123786;">Welcome to Kwizlet - Let's Learn Kubernetes! </h3>
-
-        <!--<a class="btn btn-link" href="https://www.ets.org/gre/" role="button" target="_blank">
-        <h5><b>GRE Official Site</b></h5></a> -->
+        <a class="btn btn-link btn-lg btn-primary" href="https://kubernetes.io/docs/home/" role="button" target="_blank">
+        <h5 style="color: white;"><b>Kubernetes Documentation</b></h5></a> 
+        <br>
         <br>
         <a class="btn btn-link btn-lg btn-primary" href="{% url 'flashcards:flashcards' %}" role="button">
         <h5 style="color: white;"><b>Flashcards</b></h5></a>
+<br/>
+<br/>
+        {% load static %}
+
+        <div class="row">
+            <div class="column">
+              <div class="content">
+                <img src="{% static 'images/node-128.png' %}" alt="node" style="Width:70%">
+              </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+              <img src="{% static 'images/node-128.png' %}" alt="node" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/etcd-128.png' %}" alt="etcd" style="Width:70%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/sched-128.png' %}" alt="scheduler" style="Width:70%">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <div class="content">
+                <img src="{% static 'images/node-128.png' %}" alt="node" style="Width:70%">
+              </div>
+            </div>
+        </div>
 
 </div>
 {% endblock %}

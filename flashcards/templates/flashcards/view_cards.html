@@ -13,8 +13,7 @@
 
   </head>
   <body>
-<style>
-
+<style> 
 .centered {
   position: fixed;
   top: 50%;
@@ -23,53 +22,118 @@
   transform: translate(-50%, -50%);
 }
 
-.flip-card {
-	display: inline-block;
-    width: 400px;
-    height: 360px;
-/*   border: 1px solid #CCC; */
-    margin: 40px 0;
-    perspective: 600px;
+body {
+    margin: 0;
+    padding: 0 ;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #eee;
 }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	transition: transform 1s;
-	transform-style: preserve-3d;
-	transform-origin: center right;
+body a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-	transform: rotateX(-180deg);
- }  
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.nav-menu {
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
+    top: 105%;
+    left: 30%;
 }
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-	background-color: #4d4dff;
-	color: white;
+.nav-menu-bottom {
+	position: absolute;
+    top: 125%;
+    left: 10%;
 }
 
-/* Style the back side */
-.flip-card-back {
-	background-color: dodgerblue;
-	color: white;
+.flip-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+    perspective: 600px;
+    transition: .5s;
+}
+
+.flip-card:hover .flip-card-front {
 	transform: rotateX(-180deg);
+}
+
+.flip-card:hover .flip-card-back {
+	transform: rotateX(0deg);
+}
+
+.flip-card-front {
+  height: 100%;
+  width: 100%;
+  background: #225dcf;;
+  background-position: 50% 50%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform: rotateX(0deg);
+  transition: 0.5s;
+}
+
+.flip-card-back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333398;
+  backface-visibility: hidden;
+  transform: rotateX(180deg);
+  transition: 0.5s;
+  color: #ffffff;
+}
+
+.flip-card-back h2 {
+  margin: 60% auto 35% auto;
+  font-size: 26px;
+}
+.flip-card-back h2 span {
+  font-size: 20px;
+}
+.flip-card-back a {
+  height: 20px;
+  width: 20px;
+  padding: 5px 5px;
+  border-radius: 4px;
+  line-height: 20px;
+}
+.flip-card-back a:hover {
+  color: #000000;
+  background-color: #fff;
+}
+
+.p-text {
+	font-size: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 100;
+	color: 	#fff;
+	line-height: 1.625;
+	position: absolute;
+	text-align: center;
+	top: 13%;
+	left: 5%;
+	right: 5%;
+}
+
+.topic-text {
+	color: #fff;
+	font-weight: 150;
+	font-size: 15px;
 }
 
 </style>
+
+
 </head>
 {% endblock %}
 
@@ -84,66 +148,64 @@
 
 		<!--Front of Card-->
 		<div class="flip-card-front">
-		<div class="card-header">{{ card_set_object }}
+		<div class="card-header topic-text">{{ card_set_object }}
 		</div>
-		<p>
-		<h4 class="card-title" style="font-size: 45px">{{ card_object.question }}</h4>
-		</p>
+		<p class="p-text card-title text-center">{{ card_object.question }}</p>
 		</div>
 
 		<!--Back of Card-->
 		<div class="flip-card-back">
-		<p>
-		<h4 class="card-text">{{ card_object.answer }}</h4>
-		</p>
+		<p class="p-text card-text text-center">{{ card_object.answer }}</p>
 		</div>
 	</div>
-	</div>
-
 	<br>
 	{% else %}
 	<p><b>No cards are in the {{card_set_object | upper }} card set.</b></p>
 	{% endif %}
-	
-	<!--Previous/Random/Next Card Buttons-->
+
 	<nav aria-label="...">
-	<ul class="pagination pagination-lg">
-
-		{% if card_object %}
-		<li class="page-item"><a class="page-link" 
-		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_previous_card.id }}">
-		<i class="fa-solid fa-circle-arrow-left" style="color: #0b51cb;"></i></a></li>
-
-		<li class="page-item"><a class="page-link"
-		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_set_object.get_random_card.id }}">
-		<i class="fa-solid fa-shuffle" style="color: #0b51cb;"></i></a></li>
-
-		<li class="page-item"><a class="page-link" 
-		href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_next_card.id }}">
-		<i class="fa-solid fa-circle-arrow-right" style="color: #0b51cb;"></i></a></li>
-		{% endif %}
-	</ul>
-	</nav>
+		<ul class="nav-menu pagination pagination-lg">
 	
+			{% if card_object %}
+			<li class="page-item"><a class="page-link" 
+			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_previous_card.id }}">
+			<i class="fa-solid fa-circle-arrow-left" style="color: #0b51cb;"></i></a></li>
 	
-	<nav aria-label="...">
-	<ul class="pagination pagination-lg">
-	<li class="page-item"><a class="page-link" 
-	href="{% url 'flashcards:edit_card_set' card_set_object.id %}"
-	role="button">Edit Deck</a><p>
+			<li class="page-item"><a class="page-link"
+			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_set_object.get_random_card.id }}">
+			<i class="fa-solid fa-shuffle" style="color: #0b51cb;"></i></a></li>
+	
+			<li class="page-item"><a class="page-link" 
+			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_next_card.id }}">
+			<i class="fa-solid fa-circle-arrow-right" style="color: #0b51cb;"></i></a></li>
+			{% endif %}
+		</ul>
+		</nav>
 
-	{% if card_object %}
-	<li class="page-item"><a class="page-link" 
-	href="{% url 'flashcards:edit_card' card_object.id %}"  
-	role="button">Edit Card</a><p>
-	{% endif %}
-
-	<li class="page-item"><a class="page-link"  
-	href="{% url 'flashcards:create_card' card_set_object.id %}"  
-	role="button">Add Card</a><p>
-	</ul>
-	</nav>
+		<nav aria-label="...">
+			<ul class="nav-menu-bottom pagination pagination-lg">
+			<li class="page-item"><a class="page-link" 
+			href="{% url 'flashcards:edit_card_set' card_set_object.id %}"
+			role="button">Edit Deck</a><p>
+		
+			{% if card_object %}
+			<li class="page-item"><a class="page-link" 
+			href="{% url 'flashcards:edit_card' card_object.id %}"  
+			role="button">Edit Card</a><p>
+			{% endif %}
+		
+			<li class="page-item"><a class="page-link"  
+			href="{% url 'flashcards:create_card' card_set_object.id %}"  
+			role="button">Add Card</a><p>
+			</ul>
+			</nav>
+			</div>
 	</div>
+
+	
+		
+	
+
 
 	<div class="col-sm-2 mr-2">
 		<p></p>

@@ -43,8 +43,8 @@ class Card(models.Model):
     '''
     parent_card_set = models.ForeignKey(Card_Set, on_delete = models.CASCADE)
     
-    question = models.CharField(max_length = 50, null = False, blank = False)         # Vocabulary word
-    answer = models.TextField(max_length = 500, null = False, blank = False)  # Word's definition
+    question = models.CharField(max_length = 50, null = False, blank = False)         # Question
+    answer = models.TextField(max_length = 500, null = False, blank = False)  # Answer
     
 
     def __str__(self):

@@ -12,26 +12,26 @@
         </div><br><div class="row ml-5">
     {% endif %}
 
-        <div class="col-sm-6" style="width: 25rem;">
+        <div class="col-sm-6" style="width: 45rem;">
             
 
             <!-- mt-4 for space between cards -->
             {% if forloop.counter0 == 2 %}
-            <div class="card text-white bg-{{ color }} mb-3 text-center" style="width: 25rem;">
+            <div class="card text-white bg-{{ color }} mr-5 text-center mt-4" style="width: 35rem;">
             {% else %}
-            <div class="card text-white bg-{{ color }} mb-3 text-center" style="width: 25rem;">
+            <div class="card text-white bg-{{ color }} mr-3 text-center mt-4" style="width: 35rem;">
             {% endif %}
 
-            <div class="card-header" style="width: 25rem;">{{ t.description }}
+            <div class="card-header" style="width: 35rem;">{{ t.description }}
             </div>
-            <div class="card-body" style="width: 25rem;">
+            <div class="card-body" style="width: 35rem;">
                 <h5 class="card-title text-center">{{ t.topic }}</h5>
 
                 <!--conditional statement for plural/singular use of the word card displayed on template-->
                 {% if t.get_card_count != 1 %}
-                    <h6 class="card-subtitle mb-3 text-white text-center" style="width: 25rem;">{{ t.get_card_count }} cards in deck</h6>
+                    <h6 class="card-subtitle mb-2 text-white text-center" style="width: 35rem;">{{ t.get_card_count }} cards in deck</h6>
                 {% else %}
-                    <h6 class="card-subtitle mb-3 text-white text-center" style="width: 25rem;">{{ t.get_card_count }} card in deck</h6>
+                    <h6 class="card-subtitle mb-2 text-white text-center" style="width: 35rem;">{{ t.get_card_count }} card in deck</h6>
                 {% endif %}
 
                 <br/>
