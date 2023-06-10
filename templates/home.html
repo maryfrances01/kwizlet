@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block head %}
 <title>Kwizlet | Home</title>
 <head>
@@ -8,35 +8,6 @@
 {% endblock %}
 
 <style>
-  .row {
-  margin: 8px -16px;
-}
-
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 10px;
-}
-
-/* Create four equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 5%;
-}
-
-/* Clear floats after rows */ 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Content */
-.content {
-  background-color: white;
-  padding: 15px;
-}
-
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 900px) {
   .column {
@@ -50,25 +21,18 @@
     width: 100%;
   }
 }
-
-
-/* Clear floats after image containers */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
 </style>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 
 {% block body%}
 <div class="container text-center">
     <br/>
     <br/>
-    
+
         <h3 style="color: #123786;">Welcome to Kwizlet - Let's Learn Kubernetes! </h3>
 
         <a class="btn btn-link btn-lg btn-primary" href="https://kubernetes.io/docs/home/" role="button" target="_blank">
-        <h5 style="color: white;"><b>Kubernetes Documentation</b></h5></a> 
+        <h5 style="color: white;"><b>Kubernetes Documentation</b></h5></a>
         <br>
         <br>
         <a class="btn btn-link btn-lg btn-primary" href="{% url 'flashcards:flashcards' %}" role="button">

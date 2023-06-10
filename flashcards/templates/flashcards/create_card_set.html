@@ -23,11 +23,11 @@
             <button type="submit" class="btn btn-primary btn-sm">Submit</button>
 
              {% if edit_mode %}
-            <a class="btn btn-primary btn-sm" href="{% url 'flashcards:delete_card_set' card_set_object.id %}" 
+            <a class="btn btn-primary btn-sm" href="{% url 'flashcards:delete_card_set' card_set_object.id %}"
             role="button">Delete</a>
             {% endif %}
         </form>
-        
+
     </div>
 </div>
 

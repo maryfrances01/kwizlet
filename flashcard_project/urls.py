@@ -18,9 +18,10 @@ from django.urls import include, re_path
 from . import views
 
 urlpatterns = [
-    re_path(r'^$', views.index, name = 'index'), 
-    re_path(r'^admin/', admin.site.urls), 
-    #re_path(r'^flashcards/', include(('flashcards.urls', 'flashcards'), namespace = 'flashcards')),mespace = 'flashcards')),
-    re_path(r'^flashcards/', include(('flashcards.urls', 'flashcards'), namespace = 'flashcards')),
-
+    re_path(r"^$", views.index, name="index"),
+    re_path(r"^admin/", admin.site.urls),
+    re_path(
+        r"^flashcards/",
+        include(("flashcards.urls", "flashcards"), namespace="flashcards"),
+    ),
 ]

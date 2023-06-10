@@ -6,133 +6,16 @@
 
 <head>
 	{% load static %}
-
     {% block style %}
 	<link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/all.min.css" %}" />
 	{% endblock %}
 
   </head>
   <body>
-<style> 
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-}
-
-body {
-    margin: 0;
-    padding: 0 ;
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: #eee;
-}
-
-body a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.nav-menu {
-	position: absolute;
-    top: 105%;
-    left: 30%;
-}
-
-.nav-menu-bottom {
-	position: absolute;
-    top: 125%;
-    left: 10%;
-}
-
-.flip-card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 400px;
-    width: 500px;
-    transform: translate(-50%, -50%);
-    transform-style: preserve-3d;
-    perspective: 600px;
-    transition: .5s;
-}
-
-.flip-card:hover .flip-card-front {
-	transform: rotateX(-180deg);
-}
-
-.flip-card:hover .flip-card-back {
-	transform: rotateX(0deg);
-}
-
-.flip-card-front {
-  height: 100%;
-  width: 100%;
-  background: #225dcf;;
-  background-position: 50% 50%;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  transform: rotateX(0deg);
-  transition: 0.5s;
-}
-
-.flip-card-back {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #333398;
-  backface-visibility: hidden;
-  transform: rotateX(180deg);
-  transition: 0.5s;
-  color: #ffffff;
-}
-
-.flip-card-back h2 {
-  margin: 60% auto 35% auto;
-  font-size: 26px;
-}
-.flip-card-back h2 span {
-  font-size: 20px;
-}
-.flip-card-back a {
-  height: 20px;
-  width: 20px;
-  padding: 5px 5px;
-  border-radius: 4px;
-  line-height: 20px;
-}
-.flip-card-back a:hover {
-  color: #000000;
-  background-color: #fff;
-}
-
-.p-text {
-	font-size: 30px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 100;
-	color: 	#fff;
-	line-height: 1.625;
-	position: absolute;
-	text-align: center;
-	top: 13%;
-	left: 5%;
-	right: 5%;
-}
-
-.topic-text {
-	color: #fff;
-	font-weight: 150;
-	font-size: 15px;
-}
+<style>
 
 </style>
-
+<link rel="stylesheet" href="{% static 'css/view_cards.css' %}">
 
 </head>
 {% endblock %}
@@ -165,17 +48,17 @@ body a {
 
 	<nav aria-label="...">
 		<ul class="nav-menu pagination pagination-lg">
-	
+
 			{% if card_object %}
-			<li class="page-item"><a class="page-link" 
+			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_previous_card.id }}">
 			<i class="fa-solid fa-circle-arrow-left" style="color: #0b51cb;"></i></a></li>
-	
+
 			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_set_object.get_random_card.id }}">
 			<i class="fa-solid fa-shuffle" style="color: #0b51cb;"></i></a></li>
-	
-			<li class="page-item"><a class="page-link" 
+
+			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:view_card_set' card_set_object.id %}?card={{ card_object.get_next_card.id }}">
 			<i class="fa-solid fa-circle-arrow-right" style="color: #0b51cb;"></i></a></li>
 			{% endif %}
@@ -184,27 +67,27 @@ body a {
 
 		<nav aria-label="...">
 			<ul class="nav-menu-bottom pagination pagination-lg">
-			<li class="page-item"><a class="page-link" 
+			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:edit_card_set' card_set_object.id %}"
 			role="button">Edit Deck</a><p>
-		
+
 			{% if card_object %}
-			<li class="page-item"><a class="page-link" 
-			href="{% url 'flashcards:edit_card' card_object.id %}"  
+			<li class="page-item"><a class="page-link"
+			href="{% url 'flashcards:edit_card' card_object.id %}"
 			role="button">Edit Card</a><p>
 			{% endif %}
-		
-			<li class="page-item"><a class="page-link"  
-			href="{% url 'flashcards:create_card' card_set_object.id %}"  
+
+			<li class="page-item"><a class="page-link"
+			href="{% url 'flashcards:create_card' card_set_object.id %}"
 			role="button">Add Card</a><p>
 			</ul>
 			</nav>
 			</div>
 	</div>
 
-	
-		
-	
+
+
+
 
 
 	<div class="col-sm-2 mr-2">
@@ -215,7 +98,7 @@ body a {
 		<h6>Sentences for - {{ card_object.question | upper }}</h6>
 
 		{% if card_object.sentences|length == 0 %}
-			<p>You have not written a sentence for {{ card_object.question }}.</p> 
+			<p>You have not written a sentence for {{ card_object.question }}.</p>
 			<a class="btn btn-outline-warning" href="{% url 'flashcards:edit_card' card_object.id %}" role="button">
 			Write a Sentence</a>
 		{% else %}

@@ -13,8 +13,8 @@
    ```
    git clone https://github.com/maryfrances01/qwizlet.git
    ```
-   
-2. Create your virtual environment: 
+
+2. Create your virtual environment:
 
    ```
    python3 -m venv venv

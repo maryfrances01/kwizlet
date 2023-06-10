@@ -13,7 +13,7 @@
     {% endif %}
 
         <div class="col-sm-6" style="width: 25rem;">
-            
+
 
             <!-- mt-4 for space between cards -->
             {% if forloop.counter0 == 2 %}
@@ -43,18 +43,16 @@
             </div>
             </div>
         </div>
-        
+
     {% if forloop.counter0 == 2 %}
         <div class="column ml-5">
             <h3>Custom Card Set</h3>
             <h6>Create a custom study set</h6>
             <p>
-            <a class="btn btn-primary" href="{% url 'flashcards:create_card_set' %}"  
+            <a class="btn btn-primary" href="{% url 'flashcards:create_card_set' %}"
             role="button">Create New</a>
             </p>
         </div>
-    {% endif %}     
+    {% endif %}
 {% endfor %}
 {% endblock %}
-
-         
