@@ -13,7 +13,6 @@
   </head>
   <body>
 <style>
-
 </style>
 <link rel="stylesheet" href="{% static 'css/view_cards.css' %}">
 
@@ -21,18 +20,14 @@
 {% endblock %}
 
 {% block body%}
-<div class="container">
-<div class="row">
-
-	<div class="col-md-5 mr-5 centered">
+<label>
+	<input type="checkbox" />
 	{% if card_object %}
 	<div class="flip-card">
-	<div class="flip-card-inner">
-
 		<!--Front of Card-->
 		<div class="flip-card-front">
-		<div class="card-header topic-text">{{ card_set_object }}
-		</div>
+		<!-- <div class="card-header topic-text">{{ card_set_object }}
+		</div> -->
 		<p class="p-text card-title text-center">{{ card_object.question }}</p>
 		</div>
 
@@ -40,11 +35,16 @@
 		<div class="flip-card-back">
 		<p class="p-text card-text text-center">{{ card_object.answer }}</p>
 		</div>
-	</div>
+
 	<br>
 	{% else %}
 	<p><b>No cards are in the {{card_set_object | upper }} card set.</b></p>
 	{% endif %}
+	</div>
+	</label>
+	<div>
+</div>
+
 
 	<nav aria-label="...">
 		<ul class="nav-menu pagination pagination-lg">
@@ -65,6 +65,8 @@
 		</ul>
 		</nav>
 
+
+
 		<nav aria-label="...">
 			<ul class="nav-menu-bottom pagination pagination-lg">
 			<li class="page-item"><a class="page-link"
@@ -81,33 +83,8 @@
 			href="{% url 'flashcards:create_card' card_set_object.id %}"
 			role="button">Add Card</a><p>
 			</ul>
-			</nav>
-			</div>
-	</div>
+		</nav>
 
-
-
-
-
-
-	<div class="col-sm-2 mr-2">
-		<p></p>
-	</div>
-
-	<!--<div class="col-xl-4">
-		<h6>Sentences for - {{ card_object.question | upper }}</h6>
-
-		{% if card_object.sentences|length == 0 %}
-			<p>You have not written a sentence for {{ card_object.question }}.</p>
-			<a class="btn btn-outline-warning" href="{% url 'flashcards:edit_card' card_object.id %}" role="button">
-			Write a Sentence</a>
-		{% else %}
-			<p>{{ card_object.sentences }}</p>
-			<a class="btn btn-outline-warning" href="{% url 'flashcards:edit_card' card_object.id %}" role="button">
-			Edit Sentence</a>
-		{% endif %}
-
-	</div> -->
 </div>
-</div>
+
 {% endblock %}
