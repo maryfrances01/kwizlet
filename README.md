@@ -1,17 +1,18 @@
-# Qwizlet Flashcard App
+# Kwizlet Flashcard App
 
-## Qwizlet is a configurable flashcard application created with Django.
+## Kwizlet is a configurable flashcard application created with Django.
 
-### Qwizlet Features
+### Kwizlet Features
 - Create new flashcard sets to save to a database.
-- Edit old flashcard sets.
-- Learn flashcards by flipping through the cards.
+- Edit card decks.
+- Add cards to desks.
+- Study flashcards by flipping through the cards to see questions and answers.
 
 ### Installation
 1. Clone this repo:
 
    ```
-   git clone https://github.com/maryfrances01/qwizlet.git
+   git clone https://github.com/maryfrances01/kwizlet.git
    ```
 
 2. Create your virtual environment:
@@ -56,9 +57,9 @@
    ```
 
 ### Screenshots
-<img src="images/qwizlet_homepage.png" alt="Qwizlet Homepage" width="500" height="400">
+<img src="images/kwizlet_homepage.png" alt="Kwizlet Homepage" width="500" height="400">
 <br>
-<img src="images/flashcards.png" alt="Qwizlet Flashcards" width="300" height="300">
+<img src="images/flashcards.png" alt="Kwizlet Flashcards" width="300" height="300">
 <br>
 <img src="images/study_set.png" alt="Study Flashcard Set" width="300" height="300">
 <br>
