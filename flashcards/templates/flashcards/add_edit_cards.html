@@ -31,12 +31,15 @@
             </div>
             {% endfor %}
 
+            <div style="margin-bottom: 10px;">
             <button class="btn btn-primary btn-md" type="submit">Save</button>
-
+            </div>
             {% if edit_mode %}
+            <div>
             <a class="btn btn-primary btn-md"
             href="{% url 'flashcards:delete_card' card_object.id %}"
             role="button">Delete {{ card_object | upper }}</a>
+            </div>
             {% endif %}
         </form>
 

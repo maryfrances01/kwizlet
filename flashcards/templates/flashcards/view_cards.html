@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load custom_filters %}
+
+{% block css %}
+  <style>
+  @media screen and (max-width: 1500px) and (min-width: 600px)
+  </style>
+{% endblock %}
 
 {% block head %}
 <title>Kwizlet | Flashcards</title>
@@ -20,7 +27,7 @@
 {% endblock %}
 
 {% block body%}
-<label>
+<label style="max-width: 500px">
 	<input type="checkbox" />
 	{% if card_object %}
 	<div class="flip-card">
@@ -28,12 +35,22 @@
 		<div class="flip-card-front">
 		<!-- <div class="card-header topic-text">{{ card_set_object }}
 		</div> -->
-		<p class="p-text card-title text-center">{{ card_object.question }}</p>
+		<p class="p-text card-title">{{ card_object.question }}</p>
 		</div>
 
 		<!--Back of Card-->
 		<div class="flip-card-back">
-		<p class="p-text card-text text-center">{{ card_object.answer }}</p>
+		<!-- <p class="p-text card-text text-center">{{ card_object.answer|linebreaksbr }}</p> -->
+		<p class="p-text center">
+  {% for sentence in card_object.answer|split_sentences %}
+    {% if forloop.first %}
+      <span class="highlight">{{ sentence }}</span>
+    {% else %}
+      {{ sentence }}
+    {% endif %}
+    <br> <!-- Add a line break between sentences -->
+  {% endfor %}
+</p>
 		</div>
 
 	<br>
@@ -45,6 +62,8 @@
 	<div>
 </div>
 
+
+<p>Current Card Number: {{ card_object.id }} of {{ get_card_count }} cards</p>
 
 	<nav aria-label="...">
 		<ul class="nav-menu pagination pagination-lg">
@@ -65,23 +84,21 @@
 		</ul>
 		</nav>
 
-
-
 		<nav aria-label="...">
-			<ul class="nav-menu-bottom pagination pagination-lg">
+			<ul class="nav-menu-bottom pagination pagination-lg" style="max-width: 450px">
 			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:edit_card_set' card_set_object.id %}"
-			role="button">Edit Deck</a><p>
+			role="button">Edit Deck</a>
 
 			{% if card_object %}
 			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:edit_card' card_object.id %}"
-			role="button">Edit Card</a><p>
+			role="button">Edit Card</a>
 			{% endif %}
 
 			<li class="page-item"><a class="page-link"
 			href="{% url 'flashcards:create_card' card_set_object.id %}"
-			role="button">Add Card</a><p>
+			role="button">Add Card</a>
 			</ul>
 		</nav>
 

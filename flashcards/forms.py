@@ -10,8 +10,7 @@ class Card_Set_Form(ModelForm):
     class Meta:
         model = Card_Set
         fields = ["topic", "description"]
-        # fields = ['topic', 'description', 'is_active']
-
+        
 
 class Card_Form(ModelForm):
     """
