@@ -17,9 +17,9 @@
 
 2. Change to the kwizlet directory:
 
-  ```
-  cd qwizlet
-  ```
+   ```
+   cd qwizlet
+   ```
 
 3. Create your virtual environment:
 
