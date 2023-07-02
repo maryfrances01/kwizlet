@@ -33,8 +33,6 @@
 	<div class="flip-card">
 		<!--Front of Card-->
 		<div class="flip-card-front">
-		<!-- <div class="card-header topic-text">{{ card_set_object }}
-		</div> -->
 		<p class="p-text card-title">{{ card_object.question }}</p>
 		</div>
 
@@ -50,7 +48,7 @@
     {% endif %}
     <br> <!-- Add a line break between sentences -->
   {% endfor %}
-</p>
+		</p>
 		</div>
 
 	<br>
@@ -61,9 +59,6 @@
 	</label>
 	<div>
 </div>
-
-
-<p>Current Card Number: {{ card_object.id }} of {{ get_card_count }} cards</p>
 
 	<nav aria-label="...">
 		<ul class="nav-menu pagination pagination-lg">
@@ -103,5 +98,4 @@
 		</nav>
 
 </div>
-
 {% endblock %}

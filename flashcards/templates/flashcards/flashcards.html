@@ -21,7 +21,6 @@
 
         <div class="col-sm-6" style="width: 25rem;">
 
-
             <!-- mt-4 for space between cards -->
             {% if forloop.counter0 == 2 %}
             <div class="card text-black bg-{{ color }} mb-3 text-left" style="width: 25rem;">
@@ -43,7 +42,6 @@
 
                 <br/>
                 <br/>
-                <!--p-- class="card-text">{{ t.description }}</!--p-->
                 <a href= "{% url 'flashcards:view_card_set' t.id %}" class="card-link text-white btn btn-secondary">Study</a>
                 <a href= "{% url 'flashcards:edit_card_set' t.id %}" class="card-link text-white btn btn-secondary">Edit Deck</a>
                 <a href= "{% url 'flashcards:create_card' t.id %}" class="card-link text-white btn btn-secondary">Add Card</a>
