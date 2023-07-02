@@ -15,7 +15,13 @@
    git clone https://github.com/maryfrances01/kwizlet.git
    ```
 
-2. Create your virtual environment:
+2. Change to the kwizlet directory:
+
+  ```
+  cd qwizlet
+  ```
+
+3. Create your virtual environment:
 
    ```
    python3 -m venv venv
@@ -24,13 +30,13 @@
    source venv/bin/activate
    ```
 
-3. Install the required packages using:
+4. Install the required packages using:
 
    ```
    pip3 install -r requirements.txt
    ```
 
-4. Setup the SQLite database:
+5. Setup the SQLite database:
 
    ```
    python3 manage.py makemigrations
@@ -38,19 +44,19 @@
    ```
    python3 manage.py migrate
    ```
-5. (Optional) Import the CKA exam flashcard set:
+6. (Optional) Import the CKA exam flashcard set:
 
    ```
    python3 manage.py loaddata db.json
    ```
 
-6. Start your development web server:
+7. Start your development web server:
 
    ```
    python3 manage.py runserver
    ```
 
-7. (Optional) Create a new flashcard set by entering the following URL in your browser:
+8. (Optional) Create a new flashcard set by entering the following URL in your browser:
 
    ```
    http://127.0.0.1:8000/flashcards/create/
