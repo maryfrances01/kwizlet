@@ -40,7 +40,7 @@
 5. (Optional) Import the CKA exam flashcard set:
 
    ```
-   mange.py loaddata db.json
+   python3 manage.py loaddata db.json
    ```
 
 6. Start your development web server:
@@ -56,7 +56,7 @@
    ```
 
 ### Screenshots
-<img src="images/qwizlet_homepage.png" alt="Qwizlet Homepage" width="500" height="300">
+<img src="images/qwizlet_homepage.png" alt="Qwizlet Homepage" width="500" height="400">
 <br>
 <img src="images/flashcards.png" alt="Qwizlet Flashcards" width="300" height="300">
 <br>
