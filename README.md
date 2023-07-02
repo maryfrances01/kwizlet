@@ -5,7 +5,7 @@
 ### Kwizlet Features
 - Create new flashcard sets to save to a database.
 - Edit card decks.
-- Add cards to desks.
+- Add cards to decks.
 - Study flashcards by flipping through the cards to see questions and answers.
 
 ### Installation
