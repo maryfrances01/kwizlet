@@ -1,4 +1,4 @@
-Django==4.2.1
+Django>=4.2.3
 django-static-fontawesome==6.4.0.0
 django-widget-tweaks==1.4.12
 pre-commit
